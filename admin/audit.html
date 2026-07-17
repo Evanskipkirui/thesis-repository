@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Integrity Audit — Thesis Repository Management System</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-brand">
+    <span class="brand-icon">🎓</span>
+    Thesis Repository Management System
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-user">
+      👤 <span id="tb-name">Admin</span>
+      <span class="role-pill" id="tb-role">Admin</span>
+    </div>
+    <button class="topbar-logout" onclick="logout()">⏻ Logout</button>
+  </div>
+</header>
+
+<nav class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-label">Admin Panel</div>
+    <a href="dashboard.html"><span class="nav-icon">⚙</span> Admin Dashboard</a>
+    <a href="manage_users.html"><span class="nav-icon">👥</span> Manage Users</a>
+    <a href="view_documents.html"><span class="nav-icon">📚</span> View Documents</a>
+    <a href="history.html"><span class="nav-icon">🕓</span> Version History</a>
+    <a href="rollback.html"><span class="nav-icon">↩</span> Rollback Version</a>
+    <a href="audit.html" class="active">
+      <span class="nav-icon">🛡</span> Integrity Audit
+    </a>
+  </div>
+</nav>
+
+<main class="main">
+
+  <div class="breadcrumb">
+    <a href="dashboard.html">Admin Dashboard</a> › Integrity Audit
+  </div>
+
+  <div class="page-head">
+    <div>
+      <h2>🛡 File Integrity Audit</h2>
+      <p>Re-hashes every stored file and compares against recorded SHA-256 values.</p>
+    </div>
+    <button class="btn btn-gold" id="run-audit-btn">
+      ▶&nbsp; Run Integrity Audit
+    </button>
+  </div>
+
+  <!-- Audit summary stats -->
+  <div class="stats-row" id="audit-stats" style="display:none">
+    <div class="stat-card">
+      <div class="stat-label">📋 Files Checked</div>
+      <div class="stat-value" id="audit-stat-total">—</div>
+    </div>
+    <div class="stat-card green">
+      <div class="stat-label">✔ Passed</div>
+      <div class="stat-value" id="audit-stat-passed">—</div>
+    </div>
+    <div class="stat-card red">
+      <div class="stat-label">✖ Failed</div>
+      <div class="stat-value" id="audit-stat-failed">—</div>
+    </div>
+  </div>
+
+  <!-- Progress -->
+  <div class="card" id="audit-card">
+    <div class="card-head">
+      🛡 Integrity Audit
+      <span style="font-size:.78rem;font-weight:400;opacity:.8">
+        Algorithm: SHA-256
+      </span>
+    </div>
+    <div class="card-body">
+
+      <div id="audit-idle" style="text-align:center;padding:2rem;color:var(--muted)">
+        <div style="font-size:2.5rem;margin-bottom:.75rem">🛡</div>
+        <div style="font-size:.95rem;font-weight:600;margin-bottom:.4rem">
+          No audit has been run yet
+        </div>
+        <div style="font-size:.84rem">
+          Click "Run Integrity Audit" to verify all stored thesis files.
+        </div>
+      </div>
+
+      <div id="audit-progress" style="display:none;margin-bottom:1rem">
+        <div style="font-size:.84rem;color:var(--muted);margin-bottom:.35rem"
+             id="audit-text">Preparing audit…</div>
+        <div class="progress">
+          <div class="progress-fill" id="audit-bar"></div>
+        </div>
+      </div>
+
+      <div id="audit-results"></div>
+
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2024 Thesis Repository Management System
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard — Thesis Repository Management System</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-brand">
+    <span class="brand-icon">🎓</span>
+    Thesis Repository Management System
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-user">
+      👤 <span id="tb-name">Student</span>
+      <span class="role-pill" id="tb-role">Student</span>
+    </div>
+    <button class="topbar-logout" onclick="logout()">⏻ Logout</button>
+  </div>
+</header>
+
+<nav class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-label">Student Portal</div>
+    <a href="dashboard.html" class="active">
+      <span class="nav-icon">🏠</span> My Dashboard
+    </a>
+    <a href="register_thesis.html">
+      <span class="nav-icon">📝</span> Register Thesis
+    </a>
+    <a href="upload.html">
+      <span class="nav-icon">☁</span> Upload Version
+    </a>
+    <a href="history.html">
+      <span class="nav-icon">🕓</span> Version History
+    </a>
+    <a href="contact.html">
+      <span class="nav-icon">📞</span> Contact Admin
+    </a>
+  </div>
+</nav>
+
+<main class="main">
+
+  <div class="page-head">
+    <div>
+      <h2>🏠 Student Dashboard</h2>
+      <p>Welcome back, <span id="welcome-name">Student</span></p>
+    </div>
+    <a href="register_thesis.html" class="btn btn-gold">📝&nbsp; Register New Thesis</a>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-label">📄 My Theses</div>
+      <div class="stat-value" id="stat-theses">—</div>
+    </div>
+    <div class="stat-card green">
+      <div class="stat-label">🗂 Total Versions</div>
+      <div class="stat-value" id="stat-versions">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">📅 Last Upload</div>
+      <div class="stat-value" id="stat-last" style="font-size:1rem;padding-top:.5rem">—</div>
+    </div>
+  </div>
+
+  <div class="qa-grid">
+    <a href="register_thesis.html" class="qa-btn">
+      <span class="qa-icon">📝</span>
+      <span class="qa-label">Register Thesis</span>
+    </a>
+    <a href="upload.html" class="qa-btn">
+      <span class="qa-icon">☁</span>
+      <span class="qa-label">Upload Version</span>
+    </a>
+    <a href="history.html" class="qa-btn">
+      <span class="qa-icon">🕓</span>
+      <span class="qa-label">Version History</span>
+    </a>
+    <a href="history.html" class="qa-btn">
+      <span class="qa-icon">📋</span>
+      <span class="qa-label">View Documents</span>
+    </a>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      📚 My Registered Theses
+      <a href="register_thesis.html" class="btn btn-gold btn-sm">+ Register New</a>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th style="text-align:center">Versions</th>
+            <th>Active SHA-256 Hash</th>
+            <th>Last Upload</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="thesis-tbody">
+          <tr><td colspan="6">
+            <div class="empty-state">
+              <span class="empty-icon">⏳</span>Loading…
+            </div>
+          </td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2026 Thesis Repository Management System &nbsp;|&nbsp;
+  SHA-256 Content-Addressable Storage
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

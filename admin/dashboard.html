@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard — Thesis Repository Management System</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-brand">
+    <span class="brand-icon">🎓</span>
+    Thesis Repository Management System
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-user">
+      👤 <span id="tb-name">Admin</span>
+      <span class="role-pill" id="tb-role">Admin</span>
+    </div>
+    <button class="topbar-logout" onclick="logout()">⏻ Logout</button>
+  </div>
+</header>
+
+<nav class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-label">Admin Panel</div>
+    <a href="dashboard.html" class="active">
+      <span class="nav-icon">⚙</span> Admin Dashboard
+    </a>
+    <a href="manage_users.html">
+      <span class="nav-icon">👥</span> Manage Users
+    </a>
+    <a href="view_documents.html">
+      <span class="nav-icon">📚</span> View Documents
+    </a>
+    <a href="history.html">
+      <span class="nav-icon">🕓</span> Version History
+    </a>
+    <a href="rollback.html">
+      <span class="nav-icon">↩</span> Rollback Version
+    </a>
+    <a href="audit.html">
+      <span class="nav-icon">🛡</span> Integrity Audit
+    </a>
+  </div>
+</nav>
+
+<main class="main">
+
+  <div class="page-head">
+    <div>
+      <h2>⚙ Admin Dashboard</h2>
+      <p>Thesis Repository — Administration Panel</p>
+    </div>
+    <a href="audit.html" class="btn btn-gold">🛡&nbsp; Run Integrity Audit</a>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-label">👥 Total Students</div>
+      <div class="stat-value" id="stat-users">—</div>
+    </div>
+    <div class="stat-card green">
+      <div class="stat-label">📄 Total Documents</div>
+      <div class="stat-value" id="stat-docs">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">🗂 Total Versions</div>
+      <div class="stat-value" id="stat-vers">—</div>
+    </div>
+    <div class="stat-card red">
+      <div class="stat-label">⚠ Corrupted Files</div>
+      <div class="stat-value" id="stat-corrupt">—</div>
+    </div>
+  </div>
+
+  <!-- Quick admin actions -->
+  <div class="qa-grid" style="margin-bottom:1.5rem">
+    <a href="manage_users.html" class="qa-btn">
+      <span class="qa-icon">👥</span>
+      <span class="qa-label">Manage Users</span>
+    </a>
+    <a href="view_documents.html" class="qa-btn">
+      <span class="qa-icon">📚</span>
+      <span class="qa-label">View Documents</span>
+    </a>
+    <a href="history.html" class="qa-btn">
+      <span class="qa-icon">🕓</span>
+      <span class="qa-label">Version History</span>
+    </a>
+    <a href="rollback.html" class="qa-btn">
+      <span class="qa-icon">↩</span>
+      <span class="qa-label">Rollback Version</span>
+    </a>
+    <a href="audit.html" class="qa-btn">
+      <span class="qa-icon">🛡</span>
+      <span class="qa-label">Integrity Audit</span>
+    </a>
+  </div>
+
+  <!-- Recent theses overview -->
+  <div class="card">
+    <div class="card-head">
+      📚 All Registered Theses
+      <a href="view_documents.html" class="btn btn-ghost btn-sm">View All</a>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Student</th>
+            <th style="text-align:center">Versions</th>
+            <th>Last Upload</th>
+            <th>Integrity</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="admin-docs-tbody">
+          <tr><td colspan="7">
+            <div class="empty-state"><span class="empty-icon">⏳</span>Loading…</div>
+          </td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2024 Thesis Repository Management System
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

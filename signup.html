@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Account — Thesis Repository Management System</title>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<div class="auth-page">
+  <div class="auth-box">
+
+    <div class="auth-box-header">
+      <span class="logo">🎓</span>
+      <h1>Thesis Repository Management System</h1>
+      <p>Create your student account</p>
+    </div>
+
+    <div class="auth-box-body">
+      <h2 style="text-align:center;color:var(--blue);font-size:1rem;font-weight:700;margin-bottom:1.3rem">
+        Student Registration
+      </h2>
+
+      <div id="signup-alert" class="alert hidden"></div>
+
+      <form id="signup-form" novalidate>
+
+        <div class="form-group">
+          <label class="form-label" for="full-name">👤 Full Name <span class="form-required">*</span></label>
+          <input type="text" id="full-name" name="full_name" class="form-control"
+                 placeholder="e.g. John Kamau" required/>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="email">📧 Email Address <span class="form-required">*</span></label>
+          <input type="email" id="email" name="email" class="form-control"
+                 placeholder="you@un.ac.ke" required autocomplete="email"/>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="password">🔒 Password <span class="form-required">*</span></label>
+          <div class="pwd-wrap">
+            <input type="password" id="password" name="password" class="form-control"
+                   placeholder="Minimum 6 characters" required autocomplete="new-password"/>
+            <button type="button" class="pwd-toggle" id="toggle-pwd1">👁</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="confirm">🔒 Confirm Password <span class="form-required">*</span></label>
+          <div class="pwd-wrap">
+            <input type="password" id="confirm" name="confirm" class="form-control"
+                   placeholder="Re-enter your password" required autocomplete="new-password"/>
+            <button type="button" class="pwd-toggle" id="toggle-pwd2">👁</button>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-blue btn-block" style="margin-top:.75rem">
+          ✔&nbsp; Create Account
+        </button>
+
+      </form>
+
+      <div class="divider">or</div>
+
+      <p style="text-align:center;font-size:.85rem;color:var(--muted)">
+        Already have an account?
+        <a href="index.html" style="color:var(--blue);font-weight:600">Login</a>
+      </p>
+    </div>
+
+    <div class="auth-box-footer">
+      🔒 Secured with SHA-256 Content-Addressable Storage
+    </div>
+
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

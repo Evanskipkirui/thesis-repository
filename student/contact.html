@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact Admin — Thesis Repository Management System</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-brand">
+    <span class="brand-icon">🎓</span>
+    Thesis Repository Management System
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-user">
+      👤 <span id="tb-name">Student</span>
+      <span class="role-pill" id="tb-role">Student</span>
+    </div>
+    <button class="topbar-logout" onclick="logout()">⏻ Logout</button>
+  </div>
+</header>
+
+<nav class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-label">Student Portal</div>
+    <a href="dashboard.html"><span class="nav-icon">🏠</span> My Dashboard</a>
+    <a href="register_thesis.html"><span class="nav-icon">📝</span> Register Thesis</a>
+    <a href="upload.html"><span class="nav-icon">☁</span> Upload Version</a>
+    <a href="history.html"><span class="nav-icon">🕓</span> Version History</a>
+    <a href="contact.html" class="active"><span class="nav-icon">📞</span> Contact Admin</a>
+  </div>
+</nav>
+
+<main class="main">
+
+  <div class="breadcrumb">
+    <a href="dashboard.html">My Dashboard</a> › Contact Admin
+  </div>
+
+  <div class="page-head">
+    <div>
+      <h2>📞 Contact Administrator</h2>
+      <p>Get in touch with the system administrator for any issues.</p>
+    </div>
+  </div>
+
+  <div class="card" style="max-width:480px">
+    <div class="card-head">📋 Administrator Contact</div>
+    <div class="card-body">
+      <div style="display:flex;flex-direction:column;gap:1rem">
+
+        <div style="display:flex;align-items:center;gap:1rem">
+          <span style="font-size:1.4rem">👤</span>
+          <div>
+            <div style="font-size:.78rem;color:var(--muted)">Administrator</div>
+            <div style="font-weight:700;color:var(--blue)">Evans Rono</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:1rem">
+          <span style="font-size:1.4rem">📧</span>
+          <div>
+            <div style="font-size:.78rem;color:var(--muted)">Email</div>
+            <a href="mailto:evanskipkirui334@gmail.com"
+               style="font-weight:600;color:var(--blue)">
+              evanskipkirui334@gmail.com
+            </a>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:1rem">
+          <span style="font-size:1.4rem">📱</span>
+          <div>
+            <div style="font-size:.78rem;color:var(--muted)">Phone / WhatsApp</div>
+            <a href="tel:+254759042218"
+               style="font-weight:600;color:var(--blue)">
+              +254 759 042 218
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2024 Thesis Repository Management System
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rollback Version — Thesis Repository Management System</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-brand">
+    <span class="brand-icon">🎓</span>
+    Thesis Repository Management System
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-user">
+      👤 <span id="tb-name">Admin</span>
+      <span class="role-pill" id="tb-role">Admin</span>
+    </div>
+    <button class="topbar-logout" onclick="logout()">⏻ Logout</button>
+  </div>
+</header>
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-label">Admin Panel</div>
+    <a href="dashboard.html"><span class="nav-icon">⚙</span> Admin Dashboard</a>
+    <a href="manage_users.html"><span class="nav-icon">👥</span> Manage Users</a>
+    <a href="view_documents.html"><span class="nav-icon">📚</span> View Documents</a>
+    <a href="history.html"><span class="nav-icon">🕓</span> Version History</a>
+    <a href="rollback.html" class="active">
+      <span class="nav-icon">↩</span> Rollback Version
+    </a>
+    <a href="audit.html"><span class="nav-icon">🛡</span> Integrity Audit</a>
+  </div>
+</nav>
+
+<main class="main">
+
+  <div class="breadcrumb">
+    <a href="dashboard.html">Admin Dashboard</a> ›
+    <a href="history.html" id="history-link">Version History</a> › Rollback
+  </div>
+
+  <div class="page-head">
+    <div>
+      <h2>↩ Rollback Version</h2>
+      <p id="rb-thesis-title">Select the version you want to restore as active.</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 280px;gap:1.5rem;align-items:start"
+       id="rb-content">
+
+    <div class="card" style="margin-bottom:0">
+      <div class="card-head">🗂 Select Version to Restore</div>
+      <div class="card-body">
+
+        <div id="rb-alert" class="alert hidden"></div>
+
+        <div class="alert alert-info" style="margin-bottom:1.2rem">
+          <span class="alert-icon">✅</span>
+          <span>
+            <strong>Current Active Version:</strong>
+            <span id="rb-active-info">—</span>
+          </span>
+        </div>
+
+        <ul class="version-list" id="version-list">
+          <li style="text-align:center;color:var(--muted);padding:1rem">
+            <span class="spinner dark"></span> Loading versions…
+          </li>
+        </ul>
+
+        <div style="display:flex;gap:1rem;margin-top:1.5rem">
+          <button class="btn btn-gold" id="restore-btn">
+            ↩&nbsp; Restore Selected Version
+          </button>
+          <a href="history.html" class="btn btn-ghost">Cancel</a>
+        </div>
+
+      </div>
+    </div>
+
+    <div>
+      <div class="alert alert-warning" style="margin-bottom:1rem">
+        <span class="alert-icon">⚠</span>
+        <span>
+          <strong>Admin Action Only.</strong><br>
+          Only administrators can perform rollbacks.
+        </span>
+      </div>
+
+      <div class="info-box">
+        <strong>ℹ What Happens During Rollback</strong>
+        <ul>
+          <li>SHA-256 of the target file is <strong>re-verified</strong></li>
+          <li>Selected version becomes <strong>Active Version</strong></li>
+          <li>A new <strong>Rollback Record</strong> is added to history</li>
+          <li><strong>No versions are deleted</strong></li>
+          <li>Corrupted versions <strong>cannot</strong> be restored</li>
+          <li>You can roll back again at any time</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2024 Thesis Repository Management System
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

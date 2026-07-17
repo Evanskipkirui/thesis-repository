@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upload Version — Thesis Repository Management System</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-brand">
+    <span class="brand-icon">🎓</span>
+    Thesis Repository Management System
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-user">
+      👤 <span id="tb-name">Student</span>
+      <span class="role-pill" id="tb-role">Student</span>
+    </div>
+    <button class="topbar-logout" onclick="logout()">⏻ Logout</button>
+  </div>
+</header>
+
+<nav class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-label">Student Portal</div>
+    <a href="dashboard.html"><span class="nav-icon">🏠</span> My Dashboard</a>
+    <a href="register_thesis.html"><span class="nav-icon">📝</span> Register Thesis</a>
+    <a href="upload.html" class="active"><span class="nav-icon">☁</span> Upload Version</a>
+    <a href="history.html"><span class="nav-icon">🕓</span> Version History</a>
+    <a href="contact.html"><span class="nav-icon">📞</span> Contact Admin</a>
+</nav>
+
+<main class="main">
+
+  <div class="breadcrumb">
+    <a href="dashboard.html">My Dashboard</a> › Upload New Version
+  </div>
+
+  <div class="page-head">
+    <div>
+      <h2>☁ Upload New Version</h2>
+      <p>Each upload is preserved. Version numbers are assigned automatically.</p>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 320px;gap:1.5rem;align-items:start">
+
+    <div class="card" style="margin-bottom:0">
+      <div class="card-head">📄 Upload New Version</div>
+      <div class="card-body">
+
+        <div id="upload-alert" class="alert hidden"></div>
+
+        <form id="upload-form" novalidate>
+
+          <div class="form-group">
+            <label class="form-label" for="thesis-title">
+              Thesis Title <span class="form-required">*</span>
+            </label>
+            <input type="text" id="thesis-title" name="title"
+                   class="form-control" maxlength="300"
+                   placeholder="Enter the full title of your thesis" required/>
+            <div class="form-hint">
+              <span>Maximum 300 characters</span>
+              <span id="title-count">0 / 300</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="thesis-desc">
+              Change Note
+              <span class="form-optional">(optional)</span>
+            </label>
+            <textarea id="thesis-desc" name="description"
+                      class="form-control" maxlength="2000"
+                      placeholder="What changed in this version? e.g. Revised methodology…"></textarea>
+            <div class="form-hint">
+              <span>Maximum 2000 characters</span>
+              <span id="desc-count">0 / 2000</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="thesis-file">
+              Choose PDF File <span class="form-required">*</span>
+            </label>
+            <input type="file" id="thesis-file" name="thesis_file"
+                   class="form-control" accept=".pdf" required/>
+            <div class="form-hint">
+              <span>PDF files only &nbsp;|&nbsp; Maximum size: 20 MB</span>
+            </div>
+          </div>
+
+          <div style="display:flex;align-items:center;gap:1rem;margin-top:.5rem">
+            <button type="submit" class="btn btn-blue" id="upload-btn">
+              ☁&nbsp; Upload Version
+            </button>
+            <span id="upload-spinner"
+                  style="display:none;align-items:center;gap:8px;
+                         color:var(--muted);font-size:.84rem">
+              <span class="spinner dark"></span> Computing SHA-256 hash…
+            </span>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+    <div>
+      <div class="card" style="margin-bottom:1rem">
+        <div class="card-head">✅ Current Active Version</div>
+        <div class="card-body" style="font-size:.86rem">
+          <div style="display:flex;justify-content:space-between;margin-bottom:.6rem">
+            <span style="color:var(--muted)">Version</span>
+            <span id="current-version" class="badge badge-active">—</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:.6rem">
+            <span style="color:var(--muted)">Uploaded</span>
+            <span id="current-date">—</span>
+          </div>
+          <div>
+            <div style="color:var(--muted);margin-bottom:.3rem">SHA-256 Hash</div>
+            <code id="current-hash"
+                  style="font-size:.72rem;word-break:break-all;
+                         background:#f4f6f9;padding:6px 8px;
+                         border-radius:5px;display:block;line-height:1.6">
+              — No version yet —
+            </code>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box">
+        <strong>ℹ How Version Upload Works</strong>
+        <ol>
+          <li>File bytes hashed with <strong>SHA-256</strong></li>
+          <li>Hash checked for duplicates</li>
+          <li>Unique file saved to <code>storage/[hash]/</code></li>
+          <li>New <strong>Version Record</strong> saved to database</li>
+          <li>New version becomes <strong>Active Version</strong></li>
+          <li>All previous versions <strong>preserved forever</strong></li>
+        </ol>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2024 Thesis Repository Management System
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

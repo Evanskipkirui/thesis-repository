@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Version History — Thesis Repository Management System</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-brand">
+    <span class="brand-icon">🎓</span>
+    Thesis Repository Management System
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-user">
+      👤 <span id="tb-name">Student</span>
+      <span class="role-pill" id="tb-role">Student</span>
+    </div>
+    <button class="topbar-logout" onclick="logout()">⏻ Logout</button>
+  </div>
+</header>
+
+<nav class="sidebar">
+  <div class="sidebar-section">
+    <div class="sidebar-label">Student Portal</div>
+    <a href="dashboard.html"><span class="nav-icon">🏠</span> My Dashboard</a>
+    <a href="register_thesis.html"><span class="nav-icon">📝</span> Register Thesis</a>
+    <a href="upload.html"><span class="nav-icon">☁</span> Upload Version</a>
+    <a href="history.html" class="active"><span class="nav-icon">🕓</span> Version History</a>
+    <a href="contact.html"><span class="nav-icon">📞</span> Contact Admin</a>
+</nav>
+
+<main class="main">
+
+  <div class="breadcrumb">
+    <a href="dashboard.html">My Dashboard</a> › Version History
+  </div>
+
+  <div class="page-head">
+    <div>
+      <h2>🕓 Version History</h2>
+      <p id="thesis-title-head" style="font-size:.9rem;color:#333;font-weight:600">—</p>
+      <p id="thesis-student" style="font-size:.82rem;color:var(--muted)"></p>
+    </div>
+    <a href="upload.html" class="btn btn-blue" id="upload-link">
+      ☁&nbsp; Upload New Version
+    </a>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-label">🗂 Total Versions</div>
+      <div class="stat-value" id="stat-total">—</div>
+    </div>
+    <div class="stat-card green">
+      <div class="stat-label">✅ Active Version</div>
+      <div class="stat-value" id="stat-active">—</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">🛡 Integrity Status</div>
+      <div class="stat-value" id="stat-integrity"
+           style="font-size:1rem;padding-top:.5rem">—</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">📋 All Versions — Document History</div>
+    <div class="table-wrap" id="history-content">
+      <table>
+        <thead>
+          <tr>
+            <th>Version</th>
+            <th>SHA-256 Hash</th>
+            <th>Uploaded By</th>
+            <th>Change Note</th>
+            <th>Date &amp; Time</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="versions-tbody">
+          <tr><td colspan="7">
+            <div class="empty-state">
+              <span class="empty-icon">⏳</span>Loading…
+            </div>
+          </td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="alert alert-info">
+    <span class="alert-icon">ℹ</span>
+    <span>
+      <strong>About SHA-256 Hashes:</strong> Each hash is a unique 64-character
+      fingerprint of the file's exact bytes. Hover a hash to see the full value.
+      <strong>No version is ever deleted from this system.</strong>
+    </span>
+  </div>
+
+</main>
+
+<footer>
+  &copy; 2024 Thesis Repository Management System
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
