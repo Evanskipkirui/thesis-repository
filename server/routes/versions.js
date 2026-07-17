@@ -136,7 +136,17 @@ router.get('/:thesisId/download/:versionNumber', requireLogin, async (req, res) 
    Upload a new version — multipart/form-data
    Fields: file (PDF), changeNote (optional)
    ══════════════════════════════════════ */
-router.post('/:thesisId', requireStudent, upload.single('file'), async (req, res) => {
+router.post('/:thesisId', requireStudent, (req, res, next) => {
+  upload.single('file')(req, res, (err) => {
+    if (err) {
+      if (err.code === 'LIMIT_FILE_SIZE') {
+        return res.status(400).json({ error: 'File exceeds 20 MB limit.' });
+      }
+      return res.status(400).json({ error: err.message || 'File upload error.' });
+    }
+    next();
+  });
+}, async (req, res) => {
   try {
     const user     = req.session.user;
     const thesisId = parseInt(req.params.thesisId);
@@ -205,11 +215,6 @@ router.post('/:thesisId', requireStudent, upload.single('file'), async (req, res
     });
 
   } catch (err) {
-    // Multer file size / type error
-    if (err.message === 'Only PDF files are accepted.' ||
-        err.code === 'LIMIT_FILE_SIZE') {
-      return res.status(400).json({ error: err.code === 'LIMIT_FILE_SIZE' ? 'File exceeds 20 MB limit.' : err.message });
-    }
     console.error('Upload version error:', err);
     res.status(500).json({ error: 'Server error.' });
   }
