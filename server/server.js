@@ -2,10 +2,11 @@
 
 require('dotenv').config();
 
-const express = require('express');
-const session = require('express-session');
-const cors    = require('cors');
-const path    = require('path');
+const express  = require('express');
+const session  = require('express-session');
+const cors     = require('cors');
+const path     = require('path');
+const migrate  = require('./migrate');
 
 const authRoutes     = require('./routes/auth');
 const thesesRoutes   = require('./routes/theses');
@@ -14,6 +15,9 @@ const auditRoutes    = require('./routes/audit');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
+
+// Run database migration on startup
+migrate();
 
 /* ── Middleware ── */
 app.use(cors({
