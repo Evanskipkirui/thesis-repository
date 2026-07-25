@@ -7,15 +7,21 @@ let pool;
 
 if (process.env.MYSQL_URL) {
   // Railway provides a full connection URL
-  pool = mysql.createPool(process.env.MYSQL_URL + '?ssl={"rejectUnauthorized":false}');
+  pool = mysql.createPool({
+    uri: process.env.MYSQL_URL,
+    waitForConnections: true,
+    connectionLimit:    10,
+    queueLimit:         0,
+    ssl: { rejectUnauthorized: false },
+  });
 } else {
   // Local development using individual credentials
   pool = mysql.createPool({
-    host:     process.env.DB_HOST     || 'localhost',
-    port:     process.env.DB_PORT     || 3306,
-    user:     process.env.DB_USER     || 'root',
-    password: process.env.DB_PASSWORD || '',
-    database: process.env.DB_NAME     || 'thesis_repository',
+    host:               process.env.DB_HOST     || 'localhost',
+    port:               process.env.DB_PORT     || 3306,
+    user:               process.env.DB_USER     || 'root',
+    password:           process.env.DB_PASSWORD || '',
+    database:           process.env.DB_NAME     || 'thesis_repository',
     waitForConnections: true,
     connectionLimit:    10,
     queueLimit:         0,
