@@ -1,7 +1,7 @@
 ﻿{
   "name": "thesis-repository",
   "version": "1.0.0",
-  "description": "Thesis Repository Management System — Node.js + Express + MySQL backend",
+  "description": "Thesis Repository Management System - Node.js + Express + MySQL backend",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
