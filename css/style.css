@@ -544,12 +544,30 @@ footer {
 /* ================================================
    RESPONSIVE
    ================================================ */
+/* Two-column layout used on register, upload, rollback pages */
+.two-col-layout {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.two-col-layout.wide-side {
+  grid-template-columns: 1fr 320px;
+}
+
 @media (max-width: 768px) {
   .sidebar { display: none; }
   .main    { margin-left: 0; padding: 1rem; }
   footer   { margin-left: 0; }
   .topbar-brand { width: auto; }
   .stats-row { grid-template-columns: 1fr 1fr; }
+
+  /* Stack two-column layouts on mobile */
+  .two-col-layout,
+  .two-col-layout.wide-side {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 480px) {
